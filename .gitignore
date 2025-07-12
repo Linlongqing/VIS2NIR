@@ -2,6 +2,7 @@ debug*
 checkpoints/
 results/
 build/
+datasets/
 dist/
 torch.egg-info/
 */**/__pycache__

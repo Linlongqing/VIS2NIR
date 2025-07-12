@@ -10,7 +10,11 @@ class AlignedDataset(BaseDataset):
 
         ### input A (label maps)
         dir_A = '_A' if self.opt.label_nc == 0 else '_label'
-        self.dir_A = os.path.join(opt.dataroot, opt.phase + dir_A)
+        if self.root.startswith('your_data_path'):
+            self.dir_A = opt.dataroot
+        else:
+            self.dir_A = os.path.join(opt.dataroot, opt.phase + dir_A)
+
         self.A_paths = sorted(make_dataset(self.dir_A))
 
         ### input B (real images)

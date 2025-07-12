@@ -15,6 +15,7 @@ opt.batchSize = 1  # test code only supports batchSize = 1
 opt.serial_batches = True  # no shuffle
 opt.no_flip = True  # no flip
 
+
 data_loader = CreateDataLoader(opt)
 dataset = data_loader.load_data()
 visualizer = Visualizer(opt)
