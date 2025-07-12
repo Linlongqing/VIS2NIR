@@ -1,12 +1,14 @@
 
 
 # VIS2NIR
-### [Project](https://tcwang0509.github.io/pix2pixHD/) | [Paper](https://arxiv.org/pdf/1711.11585.pdf) <br>
-Pytorch implementation of our method for high-resolution (e.g. 2048x1024) photorealistic image-to-image translation. It can be used for turning semantic label maps into photo-realistic images or synthesizing portraits from face label maps. <br><br>
-[High-Resolution Image Synthesis and Semantic Manipulation with Conditional GANs](https://tcwang0509.github.io/pix2pixHD/)  
- [Ting-Chun Wang](https://tcwang0509.github.io/)<sup>1</sup>, [Ming-Yu Liu](http://mingyuliu.net/)<sup>1</sup>, [Jun-Yan Zhu](http://people.eecs.berkeley.edu/~junyanz/)<sup>2</sup>, Andrew Tao<sup>1</sup>, [Jan Kautz](http://jankautz.com/)<sup>1</sup>, [Bryan Catanzaro](http://catanzaro.name/)<sup>1</sup>  
- <sup>1</sup>NVIDIA Corporation, <sup>2</sup>UC Berkeley  
- In CVPR 2018.
+### 描述
+    图片生成基于[pix2pixHD](https://github.com/NVIDIA/pix2pixHD)实现，本项目重点内容是如何利用大量公开的
+可见光人脸数据集和pix2pixHD生成合格的红外图像。之前尝试过CycleGAN合成，最终测试效果不佳，利用pix2pixHD获得了
+良好的效果，基于mobilenet+arcface在Casia_NIR数据集上通过率95%@0.0001提升到了99.5%@0.0001，证明了用合成近红
+人脸数据的有效性。
+    pix2pixHD训练的重点在于像素对齐，但是一般VIS-NIR图像是由双目摄像头拍摄，导致无法完全对齐，这里使用81点人
+脸关键点进行对齐（用68点同样可行，作者手上有很好的81点关键点模型），并过滤掉对齐误差较大的图像对。如果有能力过
+滤图像质量较差的图像则是更好的选择。
 
 ## Image-to-image translation at 2k/1k resolution
 
